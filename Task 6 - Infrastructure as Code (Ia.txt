@@ -1,0 +1,17 @@
+Task 6 - Infrastructure as Code (IaC)
+1.Learn Iaac - provisioning tools and do comparisons.
+2.Learn Terraform basics
+3.Create random script (Like creating ec2, changing ssh or such)
+4.Learn cloud formation basics
+-------------------------------------------------------------------------------------------------------------
+1.Learn Iaac - provisioning tools and do comparisons.
+------------------------------------------------------
+https://www.encora.com/insights/differences-between-infrastructure-as-code-iac-tools-used-for-provisioning-and-configuration-management
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+4.Learn cloud formation basics
+-------------------------------
+https://amolkokje.medium.com/aws-cloudformation-basics-and-tutorial-6a60d4de958c
+https://youtu.be/t97jZch4lMY?si=hQQMUtcBkvHgYuc-
+https://youtu.be/5RkbmWXOJzc?si=Xno5Y-LXEvI24Iv9

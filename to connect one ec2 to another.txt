@@ -1,0 +1,30 @@
+to connect one ec2 to another
+------------------------------
+cretae two ec2 child and master..
+in master -| do below
+ubuntu@ip-172-31-88-102:~/.ssh$ history
+    1  clear
+    2  sudo apt update
+    3  clear
+    4  cd ~/.ssh
+    5  ll
+    6  cat authorized_keys 
+    7  ssh -keygen
+    8  ssh-keygen
+    9  ll
+   10  cat id_rsa.pub 
+copy that key full  then....
+   11  history
+
+in child-|do below
+    2  sudo apt update
+    3  clear
+    4  cd ~/.ssh/
+    5  ll
+    6  vi authorized_keys 
+paste the id that u copied from master in top of vi...
+
+now copy child ubuntu@ip-172-31-95-244 and paste it in master 
+ssh ubuntu@ip-172-31-95-244
+
+

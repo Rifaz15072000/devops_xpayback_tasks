@@ -1,0 +1,95 @@
+Task 5 - Configuration Management:
+1. Understand the importance of Iaac. 
+2. Compare different Iaac available (Ansible,Saltstack,Puppet, Chef etc)
+3. Go through Ansible and Terraform basics.
+4. Create scripts for different types of automation. (Just try random)
+-----------------------------------------------------------------------------------------------------------
+1. Understand the importance of Iaac.
+-------------------------------------
+https://www.techtarget.com/searchitoperations/feature/Infrastructure-as-code-benefits-and-DevOps-use-cases
+https://www.trianz.com/cloud/aws-infrastructure-as-a-code
+https://www.hashicorp.com/resources/what-is-infrastructure-as-code
+https://youtu.be/4VlsdPpgvTc?si=HwUbHQf-iTD7d3at
+
+Infrastructure as Code (IaC) is a key concept in IT that involves managing and provisioning computing infrastructure through machine-readable script files, rather than through physical hardware configuration or interactive configuration tools. The importance of IaC lies in several key benefits:
+
+Automation: IaC allows for the automation of infrastructure provisioning and management processes. This automation reduces manual errors, improves consistency, and accelerates the deployment of infrastructure resources.
+
+Scalability: With IaC, scaling infrastructure up or down becomes more straightforward. This is particularly important in cloud computing environments where resources can be dynamically allocated based on demand.
+
+Consistency: IaC ensures that the entire infrastructure is defined and deployed in a consistent manner. This reduces configuration drift, where the actual state of the infrastructure diverges from its intended state over time.
+
+Version Control: IaC scripts can be version-controlled using tools like Git. This allows teams to track changes, collaborate effectively, and roll back to previous versions if needed.
+
+Reproducibility: IaC enables the recreation of the entire infrastructure environment from the ground up by running the code. This is beneficial for testing, development, and disaster recovery scenarios.
+
+Collaboration: Teams can collaborate more efficiently by sharing and modifying infrastructure code. This promotes transparency and ensures that all team members are on the same page regarding the infrastructure configuration.
+
+Agility: IaC makes it easier to adapt to changing requirements and update infrastructure configurations rapidly. This agility is crucial in today's fast-paced and dynamic IT environments.
+
+Cost Efficiency: IaC can help optimize resource utilization, leading to cost savings. It enables organizations to allocate resources based on actual needs and automatically deprovision unnecessary resources.
+
+In summary, Infrastructure as Code is crucial in modern IT operations as it brings automation, scalability, consistency, version control, reproducibility, collaboration, agility, and cost efficiency to infrastructure management processes. This is particularly valuable in cloud computing and DevOps environments where rapid, reliable, and scalable infrastructure deployment is essential.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Compare different Iaac available (Ansible,Saltstack,Puppet, Chef etc)
+-------------------------------------------------------------------------
+https://www.justaftermidnight247.com/insights/chef-vs-puppet-vs-ansible-vs-saltstack-configuration-management-tools-compared/#:~:text=Ansible%20can%20run%20push%20or,workloads%20it%20can%20effectively%20run.
+
+https://jetpatch.com/blog/agent-management/puppet-vs-chef-vs-ansible-vs-saltstack/
+https://youtu.be/qOy3d9GtdLg?si=x2q1NyxtVSz00LwS
+
+Certainly! Ansible, SaltStack, Puppet, and Chef are all popular Infrastructure as Code (IaC) tools, each with its own strengths and features. Here's a brief comparison of these tools:
+
+Ansible:
+Configuration Language: YAML (Human-readable and easy to learn).
+Agentless: Ansible operates over SSH, making it agentless and simple to set up.
+Push Configuration: Uses a push-based approach for configuration management.
+Community and Integration: Large and active community with extensive integration capabilities. Supports a wide range of modules for various tasks.
+
+SaltStack:
+Configuration Language: YAML for state files (SLS) and Python for more complex configurations.
+Architecture: Master-minion architecture, where the master pushes configurations to minions.
+Extensibility: Highly extensible with the ability to write custom modules in Python.
+Remote Execution: Known for its powerful remote execution capabilities.
+
+Puppet:
+Configuration Language: Puppet DSL (Domain-Specific Language).
+Agent-based: Uses a client-server model where the Puppet master sends configurations to Puppet agents on nodes.
+Declarative Language: Puppet configurations describe the desired state, and Puppet handles the implementation details.
+Maturity: One of the older and more established tools with a large user base.
+
+Chef:
+Configuration Language: Ruby-based DSL or JSON.
+Agent-based: Utilizes a client-server model, where the Chef client pulls configurations from the Chef server.
+Recipe and Cookbook: Chef configurations are written in recipes and organized into cookbooks.
+Flexibility: Offers a high degree of flexibility but may have a steeper learning curve for those unfamiliar with Ruby.
+
+Considerations for Choosing:
+Ease of Learning: Ansible is often praised for its simplicity and easy learning curve due to its YAML configuration files. SaltStack and Puppet may have steeper learning curves, especially for those not familiar with Python or Puppet DSL. Chef, with its Ruby-based DSL, may also be considered more complex.
+
+Agentless vs. Agent-based: Ansible is agentless, making it easier to set up, while SaltStack, Puppet, and Chef are agent-based, providing more control over the nodes but requiring agent installations.
+
+Community Support: Ansible has a large and active community, providing extensive documentation and support. Puppet also has a strong community, while SaltStack and Chef communities are also well-established.
+
+Use Case: The choice may depend on specific use cases. For example, SaltStack's strength in remote execution may be beneficial for certain scenarios, while Puppet's maturity may be attractive for large enterprises.
+
+Flexibility and Extensibility: Chef and SaltStack offer high flexibility and extensibility, allowing users to write custom modules and scripts in their preferred languages.
+
+Ultimately, the choice between these tools depends on the specific requirements, existing skills within the team, and the preferred approach to infrastructure management. Many organizations also use a combination of these tools based on different needs within their infrastructure.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Go through Ansible and Terraform basics.
+---------------------------------------------
+https://www.cprime.com/resources/blog/terraform-and-ansible-tutorial-integrating-terraform-managed-instances-with-ansible-control-nodes/#:~:text=Terraform%20is%20designed%20to%20provision,necessary%20applications%20on%20that%20machine. (imp).
+
+https://www.digitalocean.com/community/tutorials/how-to-use-ansible-with-terraform-for-configuration-management
+
+https://k21academy.com/ansible/terraform-vs-ansible/
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Create scripts for different types of automation. (Just try random)
+----------------------------------------------------------------------
+
+
+
+
+
+
