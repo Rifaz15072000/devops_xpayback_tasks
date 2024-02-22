@@ -1,0 +1,231 @@
+Task 16  - Containerization
+1. Understand the basics of micro-services and importance of dockerisation. 
+2. Install docker and Learn the basic docker commands.
+3. Dockerise a basic node.js application and ensure it's working
+4. Dockerise a sample python application adn ensure it's working.
+5. Dockerise portainer utility in docker and learn how can we utlize it?
+6. Dockerise postgresql 
+7. Learn how can we manage docker host disc space management
+8. How can we monitor docker host effectively? 
+--------------------------------------------------------------------------------------
+curl ifconfig.me (gives outside ip address)
+
+Microservices:
+Definition:
+Microservices is an architectural style that structures an application as a collection of small, independently deployable services. Each service is designed to perform a specific business function and can communicate with other services through well-defined APIs.
+
+Key Characteristics:
+Decomposition: Applications are broken down into small, independent services.
+Independence: Each microservice is developed, deployed, and scaled independently.
+Resilience: Failures in one microservice don't necessarily impact the entire application.
+Scalability: Specific services can be scaled independently based on demand.
+Technology Diversity: Each microservice can be developed using different technologies.
+
+Advantages:
+Agility: Enables faster development and deployment cycles.
+Scalability: Scalability can be achieved more granularly.
+Technology Heterogeneity: Different services can use different technologies.
+Fault Isolation: A failure in one service doesn't affect others.
+Ease of Maintenance: Easier to understand, develop, and maintain small, focused services.
+
+Dockerization:
+Definition:
+Docker is a platform for developing, shipping, and running applications in containers. Containers are lightweight, standalone, and executable software packages that include everything needed to run a piece of software, including the code, runtime, libraries, and system tools.
+
+Key Concepts:
+Container: An isolated environment that encapsulates an application and its dependencies.
+Docker Image: A lightweight, standalone, and executable package that includes application code, runtime, libraries, and dependencies.
+Docker Containerization: The process of packaging an application and its dependencies into a container.
+
+Importance of Dockerization with Microservices:
+Consistency: Ensures consistent environments across development, testing, and production.
+Portability: Docker containers can run consistently on any environment that supports Docker, facilitating deployment across different platforms.
+Isolation: Each microservice runs in its own container, preventing conflicts between dependencies.
+Resource Efficiency: Containers share the host OS kernel, making them lightweight and more efficient than traditional virtual machines.
+Scaling: Docker enables easy scaling of microservices horizontally by spinning up additional containers.
+DevOps Integration: Docker fits seamlessly into DevOps workflows, promoting continuous integration and continuous deployment (CI/CD) practices.
+
+In summary, microservices and Dockerization together contribute to a more agile, scalable, and manageable software development and deployment process. Microservices break down large applications into manageable components, while Dockerization provides a consistent and portable environment for deploying and running these microservices.
+
+https://www.sumologic.com/blog/microservices-architecture-docker-containers/
+https://rubygarage.org/blog/advantages-of-using-docker-for-microservices
+https://youtu.be/lL_j7ilk7rc?si=yynW6twNxgyYNDLx
+https://youtu.be/rv4LlmLmVWk?si=I8E0Ahbde34FUWCq
+------------------------------------------------------------------------------------------------------------------------
+2. Install docker and Learn the basic docker commands.
+-------------------------------------------------------
+https://youtu.be/pg19Z8LL06w?si=sk6O7CjwxugAuiKh
+https://youtu.be/3c-iBn73dDE?si=skaFqIQWam6Q3TgN
+----------------------------------------------------------------------------------------------------------------
+3. Dockerise a basic node.js application and ensure it's working
+--------------------------------------------------------------------
+https://www.digitalocean.com/community/tutorials/how-to-build-a-node-js-application-with-docker
+https://www.digitalocean.com/community/tutorials/how-to-secure-a-containerized-node-js-application-with-nginx-let-s-encrypt-and-docker-compose (this is required).
+https://4sysops.com/archives/dockerizing-a-nodejs-application-with-nginx-lets-encrypt-and-docker-compose/ (use this)
+only set nginx and yml without using certbot then tell jithin to set the domain name...
+
+use docker-compose === it is used to connect different perations togather to perform the operations like nginx-docker-nodejs etc.
+
+https://youtu.be/QeUS5SpQe3g?si=X6QY1XLMxOXvml5U
+
+----------------------------------------------------------------------------------------------------------------------
+4. Dockerise a sample python application adn ensure it's working.
+-----------------------------------------------------------------
+https://www.docker.com/blog/how-to-dockerize-your-python-applications/
+https://blog.devgenius.io/containerize-a-python-application-using-docker-f8cea56568dd
+
+https://www.clickittech.com/devops/dockerize-flask-python-application/ ((full))
+
+https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-20-04  
+
+
+sudo docker-compose down
+sudo docker-compose build
+sudo docker-compose up -d
+------------------------------------------------------------------------------------------------------------------------------------
+5. Dockerise portainer utility in docker and learn how can we utlize it?
+--------------------------------------------------------------------------
+Portainer is a lightweight management user interface for Docker. It provides an easy-to-use web interface that allows users to manage Docker containers, images, volumes, networks, and other Docker components. Portainer is designed to simplify the deployment, management, and monitoring of Docker environments, making it accessible to users with varying levels of expertise.
+
+Key features of Portainer include:
+User-friendly Interface: Portainer provides a graphical user interface that makes it easy for users to interact with and manage Docker containers without having to use the command line.
+Container Management: Users can create, start, stop, restart, and remove Docker containers directly from the Portainer interface. Portainer also allows users to view container logs and inspect container details.
+Image Management: Portainer enables users to search, pull, and manage Docker images. It provides an easy way to visualize and understand the relationships between images and containers.
+Volume and Network Management: Users can create and manage Docker volumes and networks through Portainer, facilitating data persistence and communication between containers.
+Stack and Service Deployment: Portainer supports the deployment of Docker Compose stacks and Docker Swarm services. This makes it easier to manage multi-container applications and orchestrate services.
+Access Control: Portainer allows administrators to set up user accounts and control access to Docker resources through role-based access control (RBAC). This helps in securing the Docker environment.
+Monitoring and Statistics: Portainer provides basic monitoring and statistics for Docker containers, allowing users to track resource usage and performance metrics.
+Template and App Templates: Portainer supports the use of templates for common applications, making it easier to deploy and manage popular Dockerized applications with just a few clicks.
+
+Portainer can be run as a Docker container itself, making it a convenient tool for managing Docker on various platforms. It's particularly useful for developers, system administrators, and other users who want a straightforward and intuitive way to work with Docker without diving into the complexities of the command-line interface.
+
+https://earthly.dev/blog/portainer-for-docker-container-management/
+https://solid-future.com/docs/portainer/#:~:text=Portainer%20Dockerfiles%20Example%3A%20Python%20Flask%20App,-In%20this%20example&text=In%20run.py%20file%2C%20configure,docker%20container%20in%20your%20Portainer.
+
+Choose a Different Port for Portainer:
+Since your Nginx proxy is already using port 80, and your Python app is using port 8000, choose a different port for Portainer, for example, 9000:
+command to install portainer
+----------------------------
+sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6. Dockerise postgresql 
+-----------------------
+sudo docker run -d \
+  --name postgres \
+  -e POSTGRES_USER=rifaz \
+  -e POSTGRES_PASSWORD=rifaz123 \
+  -e POSTGRES_DB=python-db \
+  -p 5432:5432 \
+  postgres:latest
+
+sudo docker run -d \
+  --name pgadmin \
+  -p 5050:5050 \
+  -e PGADMIN_DEFAULT_EMAIL=admin@pgadmin.com \
+  -e PGADMIN_DEFAULT_PASSWORD=admin \
+  -e PGADMIN_LISTEN_PORT=5050 \
+  --link postgres:pgsql \
+  dpage/pgadmin4
+
+sudo docker exec -it postgres psql -U rifaz -d sample
+sudo docker exec -it postgres psql -U rifaz -d python-db
+
+https://www.sqlshack.com/getting-started-with-postgresql-on-docker/
+https://testdriven.io/blog/dockerizing-flask-with-postgres-gunicorn-and-nginx/
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+7. Learn how can we manage docker host disc space management
+--------------------------------------------------------------
+Managing Docker host disk space is crucial to ensure smooth operations and prevent performance issues. Here are several tips and techniques for Docker host disk space management:
+
+Remove Unused Containers and Images:
+Identify and remove stopped containers using the following command:
+# docker ps -a | grep 'Exited' | awk '{print $1}' | xargs docker rm
+
+Remove unused images:
+# docker image prune -a
+
+Prune System Resources:
+Use the Docker system prune command to remove stopped containers, unused networks, and dangling images:
+# docker system prune -a
+
+Limit Container Log Size:
+Docker containers generate logs that can consume disk space. Limit the log size using the --log-opt option:
+# docker run --log-opt max-size=10m -d nginx
+
+Volume Cleanup:
+Remove unused volumes with:
+# docker volume prune
+
+Adjust Docker Storage Driver Options:
+Depending on your storage driver, you can configure options to control disk space usage. For example, for the overlay2 driver, you can set options in the Docker daemon configuration file (typically located at /etc/docker/daemon.json):
+{
+  "storage-driver": "overlay2",
+  "storage-opts": [
+    "overlay2.override_kernel_check=true"
+  ]
+}
+
+Refer to Docker documentation for details on storage driver options.
+
+Monitor Disk Usage:
+Regularly monitor disk space usage on your Docker host. Tools like df or container orchestration platforms may provide insights.
+
+Docker Image Compression:
+Compress your Docker images to reduce disk space usage. Tools like Docker Slim can help optimize image size.
+
+Regularly Update Docker:
+Ensure you are using the latest version of Docker as updates may include improvements in resource utilization and bug fixes.
+
+Mount External Storage:
+If possible, consider mounting external storage for Docker volumes, especially for data-intensive applications.
+
+Use Docker Volumes Wisely:
+When dealing with persistent data, use Docker volumes instead of relying on the container file system. This allows for easier management and separation of data from the container.
+
+Always be cautious when cleaning up resources, as removing containers, images, or volumes is irreversible. Regularly perform maintenance tasks and monitor disk usage to ensure a well-managed Docker environment.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+8. How can we monitor docker host effectively? 
+-----------------------------------------------
+https://www.docker.com/blog/how-to-monitor-container-memory-and-cpu-usage-in-docker-desktop/#:~:text=Docker%20has%20a%20built%2Din,for%20all%20your%20running%20containers.
+
+https://sematext.com/blog/docker-container-monitoring/
+
+https://youtu.be/zxAmqY63eJE?si=ADdtUUVSegIngfiS
+
+Docker stats command
+Glances Docker monitoring commandline tool
+Portainer for Docker monitoring
+Zabbix for monitoring Docker containers
+Introducing CheckMK 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

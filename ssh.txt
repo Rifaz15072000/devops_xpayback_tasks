@@ -1,0 +1,16 @@
+shark app
+--------
+ip == 54.167.251.40
+
+ssh = ssh -i "devopsoct23.pem" ubuntu@ec2-54-167-251-40.compute-1.amazonaws.com
+
+domain name == mj-info.xyz  (this was actually set by mani for shar project)
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+nodejs app simple app
+----------------------
+ip = 54.198.22.119
+
+ssh = ssh -i "devopsoct23.pem" ubuntu@ec2-54-198-22-119.compute-1.amazonaws.com
+
+domain name == rifaz.xpayback.in 
