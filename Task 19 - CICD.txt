@@ -1,0 +1,255 @@
+Task 19 - CICD
+1. Learn about CI/CD and CICD Platforms available. 
+2. Install Jenkins on container using docker compose. 
+3. Implement securities on Jenkins
+4. Learn about diff pipelines
+5. Create two dummy pipelines
+6. Create a developer user/login and give access to only one pipeline
+7. Setup monitoring on Jenkins
+----------------------------------------------------------------------------------------------------------------------------
+1. Learn about CI/CD and CICD Platforms available. 
+--------------------------------------------------
+https://youtu.be/G1u4WBdlWgU?si=QVilch4aDzqtlbSD
+https://youtu.be/NzcEx2ZsE9U?si=tW-yiC2hvjMkci69
+
+CI/CD stands for Continuous Integration and Continuous Delivery (or Continuous Deployment), and it is a set of practices aimed at automating the processes involved in software development and delivery. The main goals of CI/CD are to improve efficiency, reduce errors, and accelerate the release cycle of software.
+
+Here's a brief overview of CI/CD:
+
+Continuous Integration (CI):
+CI involves automatically integrating code changes from multiple contributors into a shared repository multiple times a day.
+The primary goal is to detect and address integration issues early in the development process.
+Developers commit their changes to a version control system, and CI tools automatically build and test the code.
+
+Continuous Delivery (CD):
+Continuous Delivery is an extension of CI that focuses on automating the deployment process to make it reliable and repeatable.
+The goal is to have a deployment-ready build that can be released to production at any time.
+The deployment is often a manual step, allowing for additional testing or approval before releasing to production.
+
+Continuous Deployment (CD):
+Continuous Deployment takes automation a step further by automatically deploying code changes to production after passing the necessary tests.
+This approach aims to minimize the time between writing code and making it available to end-users.
+
+CI/CD Platforms:
+Several CI/CD platforms are available to help implement and manage these practices. Some popular ones include:
+Jenkins: An open-source automation server widely used for building, testing, and deploying code. It supports integration with a variety of plugins.
+Travis CI: A cloud-based CI/CD service that integrates with GitHub repositories. It is known for its ease of use and quick setup.
+CircleCI: A cloud-based CI/CD platform that supports parallel testing and deployment pipelines. It integrates with various version control systems.
+GitLab CI/CD: Integrated into GitLab, it provides CI/CD capabilities directly within the GitLab platform.
+GitHub Actions: Integrated directly into GitHub, it allows you to automate workflows, including CI/CD, based on events in your GitHub repositories.
+TeamCity: A CI/CD server developed by JetBrains with support for building, testing, and deploying applications.
+Bamboo: A CI/CD tool developed by Atlassian, known for its integration with other Atlassian products like Jira and Bitbucket.
+
+The choice of a CI/CD platform depends on factors like the development environment, integration requirements, scalability, and user preferences.
+Implementing CI/CD practices and choosing the right platform can significantly improve the efficiency, reliability, and speed of software development and delivery processes.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Install Jenkins on container using docker compose. 
+-----------------------------------------------------
+yaml code
+--------
+version: '3'
+services:
+  app:
+    build: flask
+    volumes:
+      - app:/app
+    ports:
+      - "8000:8000"
+    links:
+      - redis:redis
+    depends_on:
+      - redis
+  redis:
+    image: "redis:alpine"
+    expose:
+      - "6379"
+  proxy:
+    build: nginx
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - app
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    networks:
+      - jenkins_network
+
+networks:
+  jenkins_network:
+
+volumes:
+  app:
+  jenkins_home:
+
+cmd to generate jenkins password
+--------------------------------
+sudo docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+---------------------------------------------------------------------------------------------------------------------
+3. Implement securities on Jenkins
+------------------------------------
+https://youtu.be/nbYtqEaLp4A?si=1k3HMO2algD32qYH
+https://www.tutorialspoint.com/jenkins/jenkins_security.htm#:~:text=Step%201%20%E2%88%92%20Click%20on%20Manage,Jenkins'%20own%20user%20database'.
+
+https://cycode.com/blog/jenkins-security-best-practices/
+
+Securing Jenkins is crucial to protect sensitive information and ensure the integrity of your CI/CD processes. Here are some security practices you can implement for Jenkins:
+
+Access Control:
+Set up user accounts with the least privilege necessary.
+Use strong passwords for Jenkins accounts.
+Enable security realm like LDAP or Active Directory for centralized user management.
+
+Role-Based Access Control (RBAC):
+Implement RBAC to assign specific roles to users.
+Assign roles based on responsibilities (e.g., admin, developer, read-only).
+
+Credentials Management:
+Use Jenkins Credentials Plugin to securely store and manage credentials.
+Avoid hardcoding credentials in build scripts or configuration files.
+
+Securing Jenkins URL:
+Run Jenkins behind a reverse proxy with SSL/TLS to encrypt communication.
+Configure Jenkins to use HTTPS.
+
+CSRF Protection:
+Enable Cross-Site Request Forgery (CSRF) protection in Jenkins to prevent malicious attacks.
+
+Audit Logging:
+Enable Jenkins system logs and audit logs to track user activities.
+Monitor logs for suspicious activities.
+
+Plugin Security:
+Regularly update Jenkins and its plugins to the latest versions to address security vulnerabilities.
+Only install necessary plugins.
+
+Pipeline Script Security:
+Use the Jenkins Script Security Plugin to control what pipeline scripts can do.
+Avoid using script blocks without proper approvals.
+
+Node Security:
+Secure Jenkins agents by configuring them to only accept connections from the master.
+Use SSH or JNLP for agent communication.
+
+Job Configuration:
+Restrict job execution to authorized users.
+Avoid running Jenkins jobs as a superuser if not necessary.
+
+Backup and Recovery:
+Regularly backup Jenkins configuration and data.
+Test the restoration process to ensure a quick recovery in case of issues.
+
+Notification Security:
+Be cautious with notifications and webhooks, ensuring they are sent securely.
+Jenkins Security Advisory:
+
+Stay informed about Jenkins Security Advisories and apply recommended patches promptly.
+Remember to adapt these security measures based on your specific use case and organizational policies. Regularly review and update security configurations to address emerging threats and vulnerabilities.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Learn about diff pipelines
+-----------------------------
+https://www.theknowledgeacademy.com/blog/types-of-jenkins-pipeline/#:~:text=Jenkins%20Pipelines%20can%20be%20defined,stages%2C%20steps%2C%20and%20directives.
+
+In the context of Jenkins and continuous integration/continuous deployment (CI/CD), a pipeline refers to a series of automated steps that software goes through from development to deployment. Jenkins supports defining and executing pipelines through various plugins and tools. Here are some types of pipelines commonly used in 
+
+Jenkins:
+Scripted Pipeline:
+Scripted pipelines use a domain-specific language (DSL) based on Groovy.
+They are written using the Jenkinsfile script within the Jenkins interface or stored alongside the source code.
+Provides a high degree of flexibility and customization.
+Example Scripted Pipeline:
+groovy
+Copy code
+---------------------------------------------
+node {
+    stage('Build') {
+        // Code for building the application
+    }
+    stage('Test') {
+        // Code for running tests
+    }
+    stage('Deploy') {
+        // Code for deploying the application
+    }
+}
+---------------------------------------------
+Declarative Pipeline:
+Declarative pipelines provide a simplified and structured way to define pipelines.
+Use a more human-readable syntax and are suitable for straightforward CI/CD workflows.
+Specify the pipeline in a Jenkinsfile within the source code repository.
+Example Declarative Pipeline:
+groovy
+Copy code
+----------------------------------------------------------
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                // Code for building the application
+            }
+        }
+        stage('Test') {
+            steps {
+                // Code for running tests
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Code for deploying the application
+            }
+        }
+    }
+}
+------------------------------------------------------
+Multibranch Pipeline:
+Multibranch pipelines automatically detect and build branches in source code repositories.
+Suitable for projects with multiple branches, such as feature branches or pull request branches.
+Enables automatic creation of pipelines for each branch.
+Supports both scripted and declarative syntax.
+
+Pipeline as Code (Jenkinsfile Runner):
+Jenkinsfile Runner allows running Jenkins pipelines as standalone scripts outside the Jenkins server.
+Useful for testing and running pipelines locally without the need for a full Jenkins instance.
+Enables the use of Jenkins pipeline syntax outside the Jenkins environment.
+
+GitHub Actions:
+While not a Jenkins-specific pipeline, GitHub Actions is a CI/CD solution integrated with GitHub repositories.
+Define workflows using YAML files to automate build, test, and deployment processes.
+GitHub Actions can replace or complement Jenkins pipelines, especially for projects hosted on GitHub.
+
+Pipeline Shared Libraries:
+Shared libraries allow sharing common code and functionality across multiple Jenkins pipelines.
+Implement reusable functions and steps that can be used in various pipeline scripts.
+Facilitates code reuse and maintainability.
+
+These are just a few examples, and Jenkins provides a highly extensible and customizable environment, allowing users to create pipelines that suit their specific needs. The choice between scripted and declarative pipelines often depends on the complexity and requirements of the CI/CD process.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Create two dummy pipelines
+----------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. Create a developer user/login and give access to only one pipeline
+---------------------------------------------------------------------
+https://youtu.be/QvFungzXI5s?si=XWptKkwJaUO2AyKq
+https://www.guru99.com/create-users-manage-permissions.html
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. Setup monitoring on Jenkins
+-------------------------------
+https://youtu.be/EWFJem7GUAc?si=AcnkLwfIyzcrp1Th
+
+
+
+
+
+
+
+
+
