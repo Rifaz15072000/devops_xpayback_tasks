@@ -1,0 +1,41 @@
+erpnext commands
+
+https://youtu.be/7kSw-NbT-74?si=lZjFdlgJLLiiAE9X
+
+https://youtu.be/TReR0I0O1Xo?si=JrEGFrA0rGwfeNa6
+
+https://github.com/D-codE-Hub/Frappe-ERPNext-Version-14--in-Ubuntu-22.04-LTS
+
+https://github.com/D-codE-Hub/Guide-to-Install-Frappe-ERPNext-in-Ubuntu-22.04-LTS
+
+./configure --enable-optimizations
+make -j 2  # Adjust the number based on the number of CPU cores
+sudo make altinstall
+
+https://discuss.frappe.io/t/backup-restore/5675 (backup)
+
+https://github.com/frappe/helpdesk/blob/main/README.md (installing helpdesk app)
+----------------------------------------------------------------------------------
+bench --site rifaz.xyz uninstall-app helpdesk
+bench get-app https://github.com/frappe/helpdesk
+bench --site rifaz.xyz install-app helpdesk
+bench --site rifaz.xyz migrate
+bench --site rifaz.xyz clear-cache
+bench --site rifaz.xyz list-apps
+---------------------------------------------------------------------------------
+
+
+bench get-app erpnext --branch version-15
+bench get-app hrms --branch version-15
+
+bench --site dcode.com install-app erpnext
+bench --site dcode.com install-app hrms
+
+
+
+2. How to Create Issue 
+Issues are automatically created if you use the append to feature in Email Account.
+
+You can also create an Issue manually, to do that:
+1. Go to the Issue list, click on New.
+2 .Enter the Subject, Raised By, and a description of the Issue.

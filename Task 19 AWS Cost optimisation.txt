@@ -1,0 +1,122 @@
+Task 19 AWS Cost optimisation:
+Sizing Instances and database optimization
+Cost Optimization Best Practices
+-------------------------------------------------------------------------------------------------------------------------
+Optimizing costs on AWS (Amazon Web Services) is essential for businesses aiming to maximize their return on investment (ROI) while leveraging the cloud. Here are some strategies for AWS cost optimization:
+
+Right-Sizing Resources: Assess your resource usage regularly to ensure that you're using appropriately sized instances. Downsizing or upsizing instances based on actual needs can significantly reduce costs. AWS provides tools like AWS Trusted Advisor and AWS Cost Explorer to help analyze resource utilization and make informed decisions.
+
+Reserved Instances (RIs): RIs can provide significant cost savings compared to On-Demand instances, especially for predictable workloads. Evaluate your workload's stability and usage patterns to determine the most suitable RI options. AWS offers various RI types, such as Standard RIs, Convertible RIs, and Scheduled RIs, to match different usage scenarios.
+
+Spot Instances: Utilize Spot Instances for workloads with flexible start and end times or that can tolerate interruptions. Spot Instances can offer discounts of up to 90% compared to On-Demand pricing. However, be prepared for potential instance termination if the Spot price exceeds your bid.
+
+Auto Scaling: Implement Auto Scaling to dynamically adjust the number of EC2 instances based on demand. This ensures that you have enough capacity to handle traffic spikes efficiently without over-provisioning resources.
+
+Use of AWS Managed Services: Consider leveraging AWS managed services like Amazon RDS, Amazon Aurora, and Amazon Redshift instead of managing your infrastructure. Managed services can reduce operational overhead and lower costs associated with maintenance, backups, and scaling.
+
+Data Transfer Costs: Minimize data transfer costs by strategically placing resources in the same AWS region and using AWS services like Amazon CloudFront for content delivery. Also, consider using AWS Direct Connect or AWS VPN for predictable and consistent network traffic.
+
+Storage Optimization: Optimize storage costs by using the appropriate storage class (e.g., S3 Standard, S3 Intelligent-Tiering, S3 Glacier) based on data access patterns and retrieval requirements. Implement lifecycle policies to automatically transition or expire data to lower-cost storage tiers.
+
+Monitoring and Cost Management: Continuously monitor your AWS usage and spending using tools like AWS Budgets, AWS Cost Explorer, and AWS Cost and Usage Reports. Set up alerts to notify you when spending exceeds predefined thresholds, enabling proactive cost management.
+
+Serverless Computing: Leverage serverless services like AWS Lambda, Amazon API Gateway, and Amazon DynamoDB to pay only for the compute resources consumed during execution. Serverless architectures eliminate the need for managing infrastructure, leading to potential cost savings and operational efficiency.
+
+Optimize Data Transfer: Minimize data transfer costs by consolidating data transfers within the AWS network and using AWS Direct Connect for predictable and consistent network traffic.
+
+By implementing these cost optimization strategies, businesses can effectively manage their AWS expenses while maximizing the value derived from cloud services. Regularly review and refine your cost optimization efforts to adapt to evolving usage patterns and business requirements.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1) Sizing Instances and database optimization
+---------------------------------------------
+https://youtu.be/usOv-5_hzu0?si=pSHzbRxX_FQhdyvK (ebs volume resizing).
+https://youtu.be/VFrQOZqhJRg?si=2VwCqI8evr_fx6sa (changing instance type).
+
+https://youtu.be/T-viaT391aQ?si=MxqM9zj1-qt-kXL8
+https://reintech.io/blog/optimizing-aws-rds-for-high-throughput (database optimization).
+https://docs.aws.amazon.com/prescriptive-guidance/latest/sql-server-ec2-best-practices/optimize-db.html
+
+Sizing instances and optimizing databases are critical components of AWS cost optimization. Here's a more detailed look at each:
+
+Sizing Instances:
+----------------
+Monitor Resource Usage: Use AWS CloudWatch or third-party monitoring tools to gather metrics on CPU, memory, disk I/O, and network usage of your instances. Analyze this data to understand your workload's resource requirements accurately.
+
+Right-Sizing: Choose instance types that match your workload's performance requirements. AWS provides a wide range of instance types with varying CPU, memory, storage, and network capacities. Select instances that offer the right balance of resources without over-provisioning.
+
+Utilize Burstable Instances: For workloads with periodic spikes in CPU utilization, consider using burstable instance types like T3, T3a, T2, or T2 Unlimited. These instances offer baseline performance with the ability to burst above the baseline when needed, providing cost savings for variable workloads.
+
+Auto Scaling: Implement Auto Scaling to automatically adjust the number of instances based on demand. This ensures that you have enough capacity to handle traffic spikes efficiently without paying for idle resources during periods of low demand.
+
+Spot Instances: Utilize Spot Instances for non-critical or fault-tolerant workloads. Spot Instances can offer significant cost savings compared to On-Demand instances but may be reclaimed by AWS with short notice. Use Spot Fleets or Spot Auto Scaling to diversify across instance types and availability zones for improved reliability.
+
+Database Optimization:
+----------------------
+Choose the Right Database Engine: Select the appropriate database engine based on your application's requirements. AWS offers various database services like Amazon RDS (Relational Database Service), Amazon Aurora, Amazon DynamoDB, Amazon Redshift, etc. Choose the one that best fits your workload's performance, scalability, and cost considerations.
+
+Provisioned IOPS vs. General Purpose SSD: For Amazon RDS instances, carefully choose between Provisioned IOPS (input/output operations per second) and General Purpose SSD storage types based on your application's I/O requirements. Provisioned IOPS offers predictable performance but comes at a higher cost, while General Purpose SSD balances performance and cost-effectiveness.
+
+Optimize Indexing: Design efficient database schemas and create appropriate indexes to improve query performance and reduce resource consumption. Regularly review and optimize existing indexes to ensure optimal database performance.
+
+Use Read Replicas: Implement read replicas for read-heavy workloads to offload read queries from the primary database instance. Read replicas improve read scalability and reduce the load on the primary instance, leading to potential cost savings by utilizing lower-cost instance types for replicas.
+
+Scheduled Maintenance and Backups: Configure scheduled maintenance windows and automated backups during off-peak hours to minimize disruption to your application's performance. Adjust the frequency and retention period of backups based on your recovery point objectives (RPO) and recovery time objectives (RTO).
+
+Monitor and Tune Performance: Utilize database monitoring tools like Amazon CloudWatch, Amazon RDS Performance Insights, or third-party monitoring solutions to identify performance bottlenecks and optimize database configuration parameters (e.g., buffer pool size, connection pooling, query cache) for improved efficiency.
+
+Data Archiving and Cleanup: Regularly archive or delete unnecessary data to free up storage space and reduce database maintenance costs. Implement data retention policies and automated data cleanup processes to manage database growth effectively.
+
+By implementing these strategies for instance sizing and database optimization, businesses can optimize their AWS infrastructure for performance, scalability, and cost-effectiveness. Regularly monitor resource usage, adjust configurations as needed, and leverage AWS's managed services and tools to maximize the value of your cloud investment.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2)Cost Optimization Best Practices:
+------------------------------------
+https://www.cloudzero.com/blog/cost-optimization/
+https://www.digitalocean.com/resources/article/cloud-cost-optimization
+https://www.prosperops.com/blog/aws-cost-optimization-best-practices/
+
+Regularly Review and Analyze Costs: Monitor your AWS spending using tools like AWS Cost Explorer, AWS Budgets, and AWS Cost and Usage Reports. Regularly review cost breakdowns by service, instance type, region, and tag to identify areas for optimization.
+
+Utilize Reserved Instances (RIs): Purchase RIs for predictable workloads to benefit from significant cost savings compared to On-Demand instances. Choose the appropriate RI type (Standard, Convertible, Scheduled) and term length based on your usage patterns and requirements.
+
+Implement Auto Scaling: Use Auto Scaling to automatically adjust the number of EC2 instances based on demand. This ensures optimal resource utilization and minimizes costs by scaling in during periods of low demand and scaling out during peak periods.
+
+Optimize Storage Costs: Utilize storage classes like S3 Standard, S3 Intelligent-Tiering, S3 Glacier, and Amazon EBS volumes with appropriate performance and cost characteristics based on data access patterns. Implement lifecycle policies to transition or expire data to lower-cost storage tiers.
+
+Use Spot Instances: Leverage Spot Instances for fault-tolerant and flexible workloads to benefit from steep discounts compared to On-Demand pricing. Employ Spot Fleets and Spot Auto Scaling to diversify instance types and availability zones for improved reliability.
+
+Implement Tagging: Tag your AWS resources with descriptive metadata (e.g., environment, owner, project) to facilitate cost allocation and tracking. Use tags to create cost allocation reports, set up cost allocation budgets, and identify resource ownership for accountability.
+
+Optimize Networking Costs: Minimize data transfer costs by consolidating data transfers within the AWS network and using AWS Direct Connect or AWS VPN for predictable and consistent network traffic. Utilize Amazon CloudFront for content delivery to reduce latency and data transfer costs.
+
+Leverage Serverless Architectures: Utilize serverless services like AWS Lambda, Amazon API Gateway, and Amazon DynamoDB to eliminate the need for managing infrastructure and pay only for the resources consumed during execution.
+
+Monitor and Optimize Database Usage: Choose the appropriate database engine and instance type based on your application's requirements. Implement read replicas, optimize indexing, and configure scheduled maintenance and backups to improve performance and reduce costs.
+
+Enable Cost Alerts and Notifications: Set up alerts and notifications to proactively monitor spending and notify stakeholders when costs exceed predefined thresholds. Use AWS Budgets to create custom budgets and receive alerts via email or Amazon SNS (Simple Notification Service).
+
+By following these cost optimization best practices, businesses can effectively manage their AWS spending, maximize ROI, and ensure efficient use of cloud resources. Regularly review and refine your cost optimization strategies to adapt to changing usage patterns and business requirements.
+
+Choose Appropriate Storage Options
+Identify Idle Resources
+Identify Unused Resources
+Leverage Spot Instances
+Limit Data Transfer Fees
+Monitor Cost Anomalies
+Monitor Resource Consumption
+Optimize Resource Provisioning
+Reduce Your Expenditure
+Rightsizing
+Allocate Cost Based On Activity
+AWS Spot Instances
+Build A Culture Of Cost Awareness
+Choose The Correct Resources
+Choose The Exemplary Cloud Service
+Delete Unused Ebs Snapshots
+End Unused Resources
+Implement A Cloud Native Design
+Improve Cost Allocation
+Reserved Instances
+Right Size Computing Services
+Simplify Cloud Contracts
+Use Aws Compute Savings Plans
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
