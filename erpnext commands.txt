@@ -39,3 +39,66 @@ Issues are automatically created if you use the append to feature in Email Accou
 You can also create an Issue manually, to do that:
 1. Go to the Issue list, click on New.
 2 .Enter the Subject, Raised By, and a description of the Issue.
+
+
+workflow
+--------
+https://youtu.be/HUaoj42qMWk?si=gG0EVVKs6grm1U02
+https://youtu.be/OZjreBjFHtY?si=Rh1jN5Y9RbEO5h1c
+https://youtu.be/_x6YGuwEMeo?si=bnT6r_XrCY1ZtKqR
+
+
+
+whats app api intergration in ERP
+----------------------------------
+https://youtu.be/mv1zZL2iAYQ?si=s1IAtiOPn0t9p3g-
+
+
+
+pass cloud == xh3@Awe4567j@qweASw
+
+
+
+backu\p
+------------------
+https://docs.erpnext.com/docs/user/manual/en/download-backup
+https://discuss.frappe.io/t/newbie-how-to-backup/22057/2
+https://discuss.frappe.io/t/backup-restore/5675/2
+https://docs.erpnext.com/docs/user/manual/en/aws_s3
+https://help.monitorerp.com/NO-MONITOR_G5/en-us/Content/Topics/UserGuide/InstallConfig/CreateScheduleBackup.htm
+https://medium.com/@anjanadhakal09/erpnext-frappe-backup-and-restore-in-new-site-4aa908dc3fb0
+https://youtu.be/oLjshINtWGY?si=B3Q0bYAcB53TXpYz
+https://discuss.frappe.io/t/backup-data-and-file-for-erpnext-behind-nat/10873
+https://www.linkedin.com/advice/0/what-best-practices-testing-restoring-erp-data
+
+
+
+#!/usr/bin/bash
+
+# Directory paths
+backup_dir="/home/frappe-user/frappe-bench/sites/erpnext.xpayback.in/private/backups"
+erpnext_dir="/home/frappe-user/frappe-bench"
+
+# Create backup directory if it doesn't exist
+mkdir -p "$backup_dir"
+
+# Database Backup
+bench --site sitename backup --with-files --compress
+
+# File Backup
+rsync -av --delete "$erpnext_dir" "$backup_dir"
+
+# Optionally, you can add commands to compress the file backup
+# tar -zcvf "$backup_dir/erpnext_files_$(date +%Y-%m-%d_%H-%M-%S).tar.gz" -C "$erpnext_dir" .
+
+# Optionally, remove old backups to avoid cluttering the backup directory
+find "$backup_dir" -type f -mtime +7 -delete
+
+
+smtp ===  YPUCF14AFAQMFH161XL2ZCN6
+
+	Monitoring and loggin - rules writing
+
+ssh -i "erpnext-xpb.pem" ubuntu@ec2-15-207-195-155.ap-south-1.compute.amazonaws.com  ---staing
+
+ssh -i "erpnext.pem" ubuntu@ec2-3-6-8-219.ap-south-1.compute.amazonaws.com  ----production
